@@ -71,7 +71,8 @@ basis(n) = struct('atom', 0,...
                   'd', [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],...
                   'N', [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0]);
 
-%NOTE: Consider timing makebasis with and without the preallocation loop
+%NOTE: When timed with/without the preallocation loop, the difference in
+%   timing was approximately uniform on (-1.5, 1.5) milliseconds.
 
 
 for i = 1:elatms
