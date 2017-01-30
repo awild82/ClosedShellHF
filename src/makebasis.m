@@ -30,8 +30,7 @@
 
 function basis = makebasis(atoms, xyz, basissetdef)
 %
-%Stupid conversion factor I'll fix later
-bohr2ang = 0.52917721067;
+
 %Because of the various number of basis functions defined by each shell
 %type, it is simpler to use a basis function counter, m.
 m = 1;
@@ -79,7 +78,7 @@ for i = 1:elatms
     
     %Get the information for a specific atom
     atomid = atoms(i);
-    xyzi = xyz(i)/bohr2ang;     %Convert the xyz coordinates to bohr
+    xyzi = ang2bohr(xyz(i));     %Convert the xyz coordinates to bohr
     basisA = basissetdef{atomid};
     
     %Loop through the basissetdef for a specific atom and define each basis
@@ -199,9 +198,4 @@ function N = normConst(carts, alphas)
                      fact2(2*carts(2)-1)*fact2(2*carts(3)-1));
         N(i) = const*numer/denom;
     end
-end
-
-%Takes a scalar, x, and returns the semifactorial of x
-function xfac2 = fact2(x)
-    xfac2 = prod(x:-2:1);
 end
